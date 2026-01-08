@@ -1,0 +1,62 @@
+:root {
+	--tc-primary: #0d6efd;
+	--tc-success: #16a34a;
+	--tc-dark: #111827;
+	--tc-muted: #6b7280;
+	--tc-bg: #f8fafc;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+	font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+	color: #111827;
+	background: #ffffff;
+}
+
+.navbar { padding: 0.75rem 0; }
+.navbar .nav-link { color: #374151; font-weight: 500; }
+.navbar .nav-link.active, .navbar .nav-link:hover { color: var(--tc-primary); }
+.navbar .btn { border-radius: 999px; }
+
+.tc-header .navbar-brand span { color: var(--tc-dark); }
+
+.tc-hero {
+	background: radial-gradient(1200px 600px at -10% -20%, rgba(13,110,253,.08), transparent 60%),
+	            radial-gradient(900px 500px at 110% -10%, rgba(16,185,129,.08), transparent 60%), #ffffff;
+	padding: 64px 0;
+}
+.tc-hero .hero-img { max-height: 600px; object-fit: cover; }
+.tc-icon {
+	width: 66px; height: 66px; border-radius: 30px;
+	display: inline-flex; align-items: center; justify-content: center; font-size: 50px;
+}
+
+.tc-page-hero { background: var(--tc-bg); }
+
+.tc-footer { margin-top: 24px; }
+.tc-footer .btn { border-radius: 10px; }
+
+.tc-whatsapp {
+	position: fixed; right: 18px; bottom: 18px; z-index: 1000;
+	width: 54px; height: 54px; border-radius: 50%;
+	background: #25D366; color: #fff; display: grid; place-items: center;
+	box-shadow: 0 10px 30px rgba(37,211,102,.4);
+}
+.tc-whatsapp:hover { color: #fff; transform: translateY(-1px); }
+
+/* Forms */
+.form-control, .form-select { border-radius: 10px; }
+.btn { border-radius: 10px; }
+
+/* Cards */
+.card { border-radius: 16px; }
+
+/* Utilities */
+.text-secondary { color: var(--tc-muted) !important; }
+
+@media (max-width: 576px) {
+	.tc-hero { padding: 40px 0; }
+}
+
+

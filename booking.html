@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Book Service - TechCare Pro360</title>
+	<meta name="description" content="Book AMC or Home IT services. Choose service type, preferred date/time, and pay online or COD.">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+</head>
+<body>
+	<header class="tc-header sticky-top shadow-sm bg-white">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+					<img src="assets/img/techcare1.png" alt="TechCare logo" width="36" height="36">
+					<span class="fw-bold">TechCare Pro360</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navMenu">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+						<li class="nav-item"><a class="nav-link" href="testimonials.html">Reviews</a></li>
+						<li class="nav-item"><a class="nav-link" href="faq.html">FAQs</a></li>
+						<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+						<li class="nav-item ms-lg-3"><a class="btn btn-primary" href="booking.html">Book Service</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<section class="tc-page-hero bg-light py-5">
+		<div class="container">
+			<h1 class="fw-bold">Book a Service</h1>
+			<p class="text-secondary mb-0">Choose your service, enter details, and confirm your appointment.</p>
+		</div>
+	</section>
+
+	<section class="py-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-lg-7">
+					<div class="card border-0 shadow-sm">
+						<div class="card-body">
+							<h5 class="fw-semibold mb-3">Appointment Details</h5>
+							<form id="bookingForm" class="row g-3">
+								<div class="col-md-6">
+									<label class="form-label">Name</label>
+									<input type="text" class="form-control" name="name" required>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Phone</label>
+									<input type="tel" class="form-control" name="phone" required>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Email</label>
+									<input type="email" class="form-control" name="email" required>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">City</label>
+									<select class="form-select" name="city" required>
+										<option value="">Select City</option>
+										<option>Haldwani</option>
+										<option>Bhimtal</option>
+										<option>Nainital</option>
+										<option>Rudrapur</option>
+										<option>Bageshwar</option>
+										<option>Almoda</option>
+									</select>
+								</div>
+								<div class="col-12">
+									<label class="form-label">Address</label>
+									<textarea class="form-control" name="address" rows="2" required></textarea>
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Type of Service</label>
+									<select class="form-select" name="service" required>
+										<option value="">Select</option>
+										<optgroup label="AMC Services">
+											<option>PC/Laptop AMC</option>
+											<option>Network AMC</option>
+											<option>Printer AMC</option>
+										</optgroup>
+										<optgroup label="Home IT Services">
+											<option>Installation</option>
+											<option>Troubleshooting</option>
+											<option>Repair</option>
+											<option>Upgrade</option>
+										</optgroup>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<label class="form-label">Preferred Date</label>
+									<input type="date" class="form-control" name="date" required>
+								</div>
+								<div class="col-md-3">
+									<label class="form-label">Preferred Time</label>
+									<input type="time" class="form-control" name="time" required>
+								</div>
+
+								<div class="col-12">
+									<label class="form-label">Payment Option</label>
+									<ul class="nav nav-pills" id="paymentTab" role="tablist">
+										<li class="nav-item" role="presentation">
+											<button class="nav-link active" id="upi-tab" data-bs-toggle="pill" data-bs-target="#upi" type="button" role="tab">UPI</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="card-tab" data-bs-toggle="pill" data-bs-target="#card" type="button" role="tab">Card</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="wallet-tab" data-bs-toggle="pill" data-bs-target="#wallet" type="button" role="tab">Wallet</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="cod-tab" data-bs-toggle="pill" data-bs-target="#cod" type="button" role="tab">Cash on Delivery</button>
+										</li>
+									</ul>
+									<div class="tab-content border rounded-3 p-3 mt-3">
+										<div class="tab-pane fade show active" id="upi" role="tabpanel" aria-labelledby="upi-tab">
+											<p class="mb-2">Pay securely via UPI. Scan QR or use UPI ID.</p>
+											<div class="d-flex align-items-center gap-3 flex-wrap">
+												<div class="border rounded p-2 bg-light">UPI QR</div>
+												<div><span class="badge text-bg-primary">UPI ID:</span> techcare@upi</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="card-tab">
+											<p class="mb-2">Pay with debit/credit card.</p>
+											<div class="row g-2">
+												<div class="col-md-6"><input type="text" class="form-control" placeholder="Card Number"></div>
+												<div class="col-md-3"><input type="text" class="form-control" placeholder="MM/YY"></div>
+												<div class="col-md-3"><input type="password" class="form-control" placeholder="CVV"></div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+											<p class="mb-2">Select wallet</p>
+											<select class="form-select w-auto">
+												<option>Paytm</option>
+												<option>PhonePe</option>
+												<option>Amazon Pay</option>
+											</select>
+										</div>
+										<div class="tab-pane fade" id="cod" role="tabpanel" aria-labelledby="cod-tab">
+											<p class="mb-0">Pay by cash to the technician during the visit.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="alert alert-info d-none" id="assignedTech"></div>
+								</div>
+
+								<div class="col-12 d-grid">
+									<button class="btn btn-primary btn-lg" type="submit"><i class="fa-solid fa-calendar-check me-2"></i>Confirm Booking</button>
+								</div>
+								<p class="small text-secondary mb-0">You will receive a confirmation on screen and by email.</p>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="card border-0 shadow-sm mb-4">
+						<div class="card-body">
+							<h6 class="fw-semibold mb-2">How it works</h6>
+							<ol class="mb-0 text-secondary">
+								<li>Choose service and time</li>
+								<li>We assign nearest verified technician</li>
+								<li>Track visit status; pay online or COD</li>
+							</ol>
+						</div>
+					</div>
+					<div class="card border-0 shadow-sm">
+						<div class="card-body">
+							<h6 class="fw-semibold mb-2">Need help?</h6>
+							<p class="text-secondary mb-2">Chat with us instantly for any questions or custom plans.</p>
+							<a class="btn btn-success" href="https://wa.me/916397869822" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp Chat</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="tc-footer bg-dark text-white pt-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="d-flex align-items-center gap-2 mb-3">
+						<img src="assets/img/techcare1.png" alt="TechCare logo" width="32" height="32">
+						<span class="fw-bold">TechCare Pro360</span>
+					</div>
+					<p class="text-white-50">Reliable AMC and home IT services for your devices and networks.</p>
+					<div class="d-flex gap-3">
+						<a class="text-white-50" href="https://facebook.com/yourpage" target="_blank" rel="noopener"><i class="fa-brands fa-facebook fa-lg"></i></a>
+						<a class="text-white-50" href="https://instagram.com/yourpage" target="_blank" rel="noopener"><i class="fa-brands fa-instagram fa-lg"></i></a>
+						<a class="text-white-50" href="https://www.linkedin.com/company/yourpage" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<h6 class="fw-semibold mb-3">Quick Links</h6>
+					<ul class="list-unstyled">
+						<li><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+						<li><a href="services.html" class="text-white-50 text-decoration-none">Services</a></li>
+						<li><a href="about.html" class="text-white-50 text-decoration-none">About</a></li>
+						<li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+						<li><a href="booking.html" class="text-white-50 text-decoration-none">Book Service</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<h6 class="fw-semibold mb-3">Contact</h6>
+					<ul class="list-unstyled text-white-50">
+						<li><i class="fa-solid fa-phone me-2 text-success"></i> +91 6397869822</li>
+						<li><i class="fa-brands fa-whatsapp me-2 text-success"></i> <a class="text-white-50 text-decoration-none" href="https://wa.me/916397869822" target="_blank" rel="noopener">WhatsApp Chat</a></li>
+						<li><i class="fa-solid fa-envelope me-2 text-success"></i> support@techcare.example</li>
+						<li><i class="fa-solid fa-location-dot me-2 text-success"></i> Durga City Center, Haldwani</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<h6 class="fw-semibold mb-3">Newsletter</h6>
+					<form id="newsletterForm" class="d-flex gap-2">
+						<input type="email" class="form-control" placeholder="Your email" required>
+						<button class="btn btn-success" type="submit">Subscribe</button>
+					</form>
+					<p class="small text-white-50 mt-2 mb-0">Get maintenance tips and offers in your inbox.</p>
+				</div>
+			</div>
+			<hr class="border-secondary my-4">
+			<div class="d-flex flex-column flex-md-row justify-content-between align-items-center pb-4">
+				<p class="mb-2 mb-md-0 small text-white-50">© <span id="year"></span> TechCare Pro360. All rights reserved.</p>
+				<div class="small">
+					<a href="#" class="text-white-50 text-decoration-none me-3">Terms</a>
+					<a href="#" class="text-white-50 text-decoration-none">Privacy</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<a href="https://wa.me/916397869822" class="tc-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+		<i class="fa-brands fa-whatsapp"></i>
+	</a>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
