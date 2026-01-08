@@ -44,26 +44,31 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve frontend files
+// Fix for __dirname in ES module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// 🔐 Serve Admin Frontend
+app.use('/admin', express.static(path.join(__dirname, 'admin-frontend')));
+app.get('/admin/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-frontend', 'index.html'));
+});
+
+// 🌍 Serve Public Frontend (root folder)
 app.use(express.static(__dirname));
 
-// For all non-API routes, serve index.html
+// For all non-API routes, serve main index.html
 app.get('*', (req, res) => {
-  // Prevent overriding API routes
-  if (!req.path.startsWith('/api')) {
+  if (!req.path.startsWith('/api') && !req.path.startsWith('/admin')) {
     res.sendFile(path.join(__dirname, 'index.html'));
   }
 });
 
 // 404 handler for unmatched API routes
 app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found'
-  });
+  if (req.path.startsWith('/api')) {
+    res.status(404).json({ success: false, message: 'Route not found' });
+  }
 });
 
 // Error handler
@@ -77,7 +82,6 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
