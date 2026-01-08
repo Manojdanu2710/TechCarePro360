@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Import routes
 import bookingRoutes from './routes/bookingRoutes.js';
@@ -25,15 +27,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health check route
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'TechCare Pro360 API is running',
-    version: '1.0.0'
-  });
-});
-
 // API Routes
 app.use('/api', bookingRoutes);
 app.use('/api', contactRoutes);
@@ -42,7 +35,30 @@ app.use('/api', adminRoutes);
 app.use('/api', staffRoutes);
 app.use('/api', paymentRoutes);
 
-// 404 handler
+// Health check route (API only)
+app.get('/api/health', (req, res) => {
+  res.json({
+    success: true,
+    message: 'TechCare Pro360 API is running',
+    version: '1.0.0'
+  });
+});
+
+// Serve frontend files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(__dirname));
+
+// For all non-API routes, serve index.html
+app.get('*', (req, res) => {
+  // Prevent overriding API routes
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  }
+});
+
+// 404 handler for unmatched API routes
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -66,4 +82,3 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
-
