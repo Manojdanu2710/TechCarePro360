@@ -48,7 +48,7 @@ app.get('/api/health', (req, res) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve Admin Frontend Build (Vite dist)
+/// Serve Admin Frontend Build (Vite dist)
 app.use('/admin', express.static(path.join(__dirname, 'admin-frontend/dist')));
 app.get('/admin/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'admin-frontend/dist', 'index.html'));
